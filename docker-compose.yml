@@ -37,6 +37,8 @@ services:
 
   celery:
     build: .
+    env_file:
+      - .env
     tty: true
     command: celery -A config worker -l INFO
     depends_on:
@@ -45,6 +47,8 @@ services:
 
   celery-beat:
     build: .
+    env_file:
+      - .env
     tty: true
     command: celery -A config beat -l INFO -S django
     depends_on:
